@@ -1,15 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
-import { getDatabase } from 'firebase-admin/database'
-import { ref, set } from 'firebase/database'
-import admin from 'firebase-admin'
-import serviceAccount from '../project-starlight-98c83-firebase-adminsdk-no1ur-21e9b1abd8.json'
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,29 +19,17 @@ const firebaseConfig = {
     appId: '1:764043407113:web:dd93008b90858ac9862dd8',
 }
 
-// Initialize Firebase
+// // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 
-// Initialize Realtime Database and get a reference to the service
-const database = getDatabase(app)
+// // Initialize Firestore and get a reference to the service
+const db = getFirestore(app);
 
 function App() {
     const [username, setUsername] = useState('')
 
-    const admin = require('firebase-admin')
-    const serviceAccount = require('/project-starlight/project-starlight-98c83-firebase-adminsdk-no1ur-21e9b1abd8.json')
-
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        databaseURL:
-            'https://project-starlight-98c83-default-rtdb.firebaseio.com',
-    })
-
     function logIn(username) {
-        const db = getDatabase()
-        set(ref(db, 'players/' + username), {
-            username: name,
-        })
+        
     }
 
     return (
